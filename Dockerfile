@@ -1,6 +1,6 @@
 # can't build on bun, because of this issue:
 # https://github.com/oven-sh/bun/issues/4671
-FROM docker.io/node AS base
+FROM docker.io/node:21-alpine3.18 AS base
 
 FROM base AS builder
 
