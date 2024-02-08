@@ -5,24 +5,8 @@ on:
       - main
 
 jobs:
-  release-please:
-    runs-on: ubuntu-latest
-    outputs:
-      release_created: ${{ steps.release.outputs.release_created }}
-      tag_name: ${{ steps.release.outputs.tag_name }}
-
-    steps:
-      - name: release-please
-        id: release
-        uses: google-github-actions/release-please-action@v3
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          release-type: node
-
   release-image:
-    needs: release-please
     runs-on: ubuntu-latest
-    if: ${{ needs.release-please.outputs.release_created }}
     steps:
       - uses: actions/checkout@v4
 
